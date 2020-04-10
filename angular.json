@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngwl"
+    }
+  },
+  "defaultProject": "ngwl",
+  "cli": {
+    "analytics": false
+  }
 }
