@@ -1,0 +1,23 @@
+<div class="toolbar-row">
+  <ul *ngIf="categories.length">
+    <li
+      *ngFor="let category of categories"
+      (click)="selectCategory($event)"
+      >
+      {{category.name}}
+    </li>
+  </ul>
+
+  <label class="direction">
+    <input type="checkbox" (click)="changeDirection($event)">
+    <span>Descending</span>
+  </label>
+  <div class="sorting-wrapper">
+    <label for="sorting" class="sorting-label">Sorting</label>
+    <select class="sorting" (change)="changeSorting($event)" id="sorting">
+      <option value=""></option>
+      <option value="name">Name</option>
+      <option value="category">Category</option>
+    </select>
+  </div>
+</div>

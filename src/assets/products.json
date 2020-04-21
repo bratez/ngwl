@@ -1,0 +1,81 @@
+[
+  {
+    "id": 246,
+    "title": "Fifth product",
+    "description": "Some descriptions about the product for users",
+    "longDescription": "Some descriptions about the product for users Some descriptions about the product for users Some descriptions about the product for users",
+    "imageUrl": "http://placehold.it/165x100",
+    "imageBig": "http://placehold.it/320x200",
+    "inWishlist": false,
+    "category": "Category 1"
+  },
+  {
+    "id": 839,
+    "title": "Third product",
+    "description": "Some descriptions about the product for users",
+    "longDescription": "Some descriptions about the product for users Some descriptions about the product for users Some descriptions about the product for users",
+    "imageUrl": "http://placehold.it/165x100",
+    "imageBig": "http://placehold.it/320x200",
+    "inWishlist": false,
+    "category": "Category 2"
+  },
+  {
+    "id": 768,
+    "title": "Sixth product",
+    "description": "Some descriptions about the product for users",
+    "longDescription": "Some descriptions about the product for users Some descriptions about the product for users Some descriptions about the product for users",
+    "imageUrl": "http://placehold.it/165x100",
+    "imageBig": "http://placehold.it/320x200",
+    "inWishlist": false,
+    "category": "Category 3"
+  },
+  {
+    "id": 832,
+    "title": "Fourth product",
+    "description": "Some descriptions about the product for users",
+    "longDescription": "Some descriptions about the product for users Some descriptions about the product for users Some descriptions about the product for users",
+    "imageUrl": "http://placehold.it/165x100",
+    "imageBig": "http://placehold.it/320x200",
+    "inWishlist": false,
+    "category": "Category 4"
+  },
+  {
+    "id": 696,
+    "title": "Second product",
+    "description": "Some descriptions about the product for users",
+    "longDescription": "Some descriptions about the product for users Some descriptions about the product for users Some descriptions about the product for users",
+    "imageUrl": "http://placehold.it/165x100",
+    "imageBig": "http://placehold.it/320x200",
+    "inWishlist": false,
+    "category": "Category 4"
+  },
+  {
+    "id": 435,
+    "title": "First product",
+    "description": "Some descriptions about the product for users",
+    "longDescription": "Some descriptions about the product for users Some descriptions about the product for users Some descriptions about the product for users",
+    "imageUrl": "http://placehold.it/165x100",
+    "inWishlist": false,
+    "category": "Category 1"
+  },
+  {
+    "id": 415,
+    "title": "Seventh product",
+    "description": "Some descriptions about the product for users",
+    "longDescription": "Some descriptions about the product for users Some descriptions about the product for users Some descriptions about the product for users",
+    "imageUrl": "http://placehold.it/165x100",
+    "imageBig": "http://placehold.it/320x200",
+    "inWishlist": false,
+    "category": "Category 1"
+  },
+  {
+    "id": 425,
+    "title": "Eighth product",
+    "description": "Some descriptions about the product for users",
+    "longDescription": "Some descriptions about the product for users Some descriptions about the product for users Some descriptions about the product for users",
+    "imageUrl": "http://placehold.it/165x100",
+    "imageBig": "http://placehold.it/320x200",
+    "inWishlist": false,
+    "category": "Category 1"
+  }
+]

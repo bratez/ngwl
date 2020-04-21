@@ -1,0 +1,21 @@
+<h1>{{pageName}} (angular test)</h1>
+
+<app-product-list-toolbar
+  [categories]="categories"
+  (onCategory)="onCategory($event)"
+  (onChangeDirection)="onChangeDirection($event)"
+  (onSorting)="onSorting($event)"
+  >
+</app-product-list-toolbar>
+
+<ul *ngIf="products.length">
+  <li *ngFor="let product of products">
+    <div class="image">
+      <img src="{{product.imageUrl}}" alt="product.title">
+      <button class="to-wishlist" (click)="toWishlist(product.id)" [ngClass]="{'selected': product.inWishlist }">&#x2764;</button>
+    </div>
+    <div class="name" (click)="toProduct(product.id)">{{product.title}}</div>
+    <div class="category">{{product.category}}</div>
+    <div class="description">{{product.description}}</div>
+  </li>
+</ul>

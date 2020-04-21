@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductListComponentComponent } from '../app/product-list-component/product-list-component.component';
-import { ProductViewComponentComponent } from '../app/product-view-component/product-view-component.component';
-import { WishlistComponentComponent } from '../app/wishlist-component/wishlist-component.component';
+import { ProductListComponent } from '../app/components/product-list/product-list.component';
+import { ProductViewComponent } from '../app/components/product-view/product-view.component';
+import { ProductWishlistComponent } from '../app/components/product-wishlist/product-wishlist.component';
 
 
 const routes: Routes = [
-  { path: '', component: ProductListComponentComponent },
-  { path: 'products/:id', component: ProductViewComponentComponent },
-  { path: 'wishlist', component: WishlistComponentComponent }
+  { path: '', component: ProductListComponent },
+  { path: 'products/:id', component: ProductViewComponent },
+  { path: 'wishlist', component: ProductWishlistComponent }
 ];
 
 @NgModule({

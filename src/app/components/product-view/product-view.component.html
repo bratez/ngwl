@@ -1,0 +1,28 @@
+<div *ngIf="product">
+  <h1>{{product.title}} (angular test)</h1>
+  <div class="content">
+    <div class="image">
+      <img src="{{product.imageBig}}" alt="{{product.title}}">
+    </div>
+    <div class="info">
+      <div>
+        <div class="category">
+          {{product.category}}
+        </div>
+      </div>
+      <div class="description">
+        {{product.longDescription}}
+      </div>
+      <div>
+        <button
+          class="to-whishlist"
+          [ngClass]="{'selected': product.inWishlist }"
+          (click)="onWishlist(product.id)"
+          >
+          <span *ngIf="product.inWishlist">Remove from wishlist</span>
+          <span *ngIf="!product.inWishlist">Add to wishlist</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

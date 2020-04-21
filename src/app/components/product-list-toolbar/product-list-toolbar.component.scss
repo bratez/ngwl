@@ -1,0 +1,45 @@
+
+
+.toolbar-row {
+  justify-content: space-between;
+  display: flex;
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-right: 20px;
+    border: 1px solid #ccc;
+    padding: 5px 8px 5px;
+    border-radius: 4px;
+  }
+}
+
+.sorting {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px 8px 5px;
+
+  &-wrapper {
+    position: relative;
+  }
+
+  &-label {
+    font-size: 10px;
+    position: absolute;
+    top: -12px;
+  }
+}
+
+.direction {
+  padding: 5px;
+
+  input {
+    position: relative;
+    top: 2px;
+  }
+}
