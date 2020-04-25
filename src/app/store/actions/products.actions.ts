@@ -23,6 +23,7 @@ export enum EProductsActions {
 
 export class GetProducts implements Action {
   public readonly type = EProductsActions.GetProducts;
+  constructor ( public payload: Product[] ) {}
 }
 
 export class GetProductsSuccess implements Action {
