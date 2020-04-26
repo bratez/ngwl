@@ -8,7 +8,7 @@
   >
 </app-product-list-toolbar>
 
-<ul *ngIf="products.length">
+<ul *ngIf="products$ | async as products">
   <li *ngFor="let product of products">
     <div class="image">
       <img src="{{product.imageUrl}}" alt="product.title">
