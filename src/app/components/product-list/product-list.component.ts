@@ -1,26 +1,39 @@
+import { Product } from './../../interfaces/product';
+import { selectProductsList } from './../../store/selectors/products.selectors';
+import { IAppState } from './../../store/state/app.state';
+import { Store, select } from '@ngrx/store';
 import { Router, NavigationExtras } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { Product } from '../../interfaces/product';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Category } from '../../interfaces/category';
-import { ProductsService } from './../../services/products.service';
+import { GetProducts } from 'src/app/store/actions/products.actions';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   pageName = 'Products list';
   products: Product[] = [];
   categories: Category[] = [];
 
-  constructor(private router: Router, private productsService : ProductsService) {}
+  products$ = this._store.pipe(select(selectProductsList)).subscribe(data => {
+    for(let key in data){
+      this.products.push(data[key]);
+    }
+    if (this.products.length) {
+      this.categories = this.collectCategories(this.products);
+    }
+  });
+
+  constructor(private router: Router, private _store : Store<IAppState>) {}
 
   ngOnInit(): void {
-    this.productsService.getJSON().subscribe(data => {
-      this.products = data;
-      this.categories = this.collectCategories(data);
-    });
+    this._store.dispatch(new GetProducts());
+  }
+
+  ngOnDestroy(): void {
+    this.products$.unsubscribe();
   }
 
   onCategory(event) {

@@ -1,3 +1,4 @@
+import { Product } from './../../interfaces/product';
 import { RouterReducerState } from '@ngrx/router-store';
 import { ProductState, initialProductState } from './product.state';
 import { ProductsState, initialProductsState } from './products.state';

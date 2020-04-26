@@ -33,7 +33,7 @@ import { ProductWishlistComponent } from './components/product-wishlist/product-
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([ProductsEffects]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    StoreDevtoolsModule.instrument()
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent]
