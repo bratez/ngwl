@@ -13,9 +13,9 @@ import { GetProducts } from 'src/app/store/actions/products.actions';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
+
 export class ProductListComponent implements OnInit {
   pageName = 'Products list';
-  products: Product[] = [];
   categories: Category[] = [];
 
   products$: Observable<Product[]>;
@@ -40,18 +40,18 @@ export class ProductListComponent implements OnInit {
   }
 
   toWishlist(id) {
-    this.products.forEach(p => {
-      if (p.id == id) { p.inWishlist = !p.inWishlist; return }
-    })
+    // this.products.forEach(p => {
+    //   if (p.id == id) { p.inWishlist = !p.inWishlist; return }
+    // })
   }
 
   toProduct(id) {
-    const navData: NavigationExtras = {
-      state: {
-        product: this.products.filter(p => p.id == id)[0]
-      }
-    };
-    this.router.navigate([`/products/${id}`], navData);
+    // const navData: NavigationExtras = {
+    //   state: {
+    //     product: this.products.filter(p => p.id == id)[0]
+    //   }
+    // };
+    // this.router.navigate([`/products/${id}`], navData);
   }
 
   collectCategories(products): Category[] {

@@ -1,5 +1,6 @@
+import { Observable } from 'rxjs';
 import { Product } from './../../interfaces/product';
-import { Router } from '@angular/router';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,18 +8,20 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './product-view.component.html',
   styleUrls: ['./product-view.component.scss']
 })
-export class ProductViewComponent implements OnInit {
+export class ProductViewComponent implements OnInit, CanActivate {
   product: Product = null;
 
   constructor(private router: Router) {
-    if (this.router.getCurrentNavigation().extras
-        && this.router.getCurrentNavigation().extras.state
-        && this.router.getCurrentNavigation().extras.state.product) {
-      this.product = this.router.getCurrentNavigation().extras.state.product;
-    }
+
+  }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
+    return true;
+    // return confirm('Are you sure?');
   }
 
   ngOnInit(): void {
+    // get product dispatch
   }
 
   onWishlist(event) {
