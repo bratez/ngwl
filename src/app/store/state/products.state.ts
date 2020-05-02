@@ -3,10 +3,12 @@ import { Product } from './../../interfaces/product';
 
 export interface ProductsState {
   products: Product[],
-  categories: Category[]
+  categories?: Category[],
+  sortBy?: string
 }
 
 export const initialProductsState: ProductsState = {
   products: null,
-  categories: null
+  categories: null,
+  sortBy: null
 }

@@ -24,7 +24,8 @@ export const productsReducers = (
     case EProductsActions.SortProductsSuccess:
       return {
         ...state,
-        products: action.payload
+        products: action.payload.products,
+        sortBy: action.payload.sortBy
       }
 
     case EProductsActions.DirectSortingSuccess:

@@ -43,11 +43,12 @@ export class FilterProductsSuccess implements Action {
 
 export class SortProducts implements Action {
   public readonly type = EProductsActions.SortProducts;
+  constructor ( public payload: string ) {}
 }
 
 export class SortProductsSuccess implements Action {
   public readonly type = EProductsActions.SortProductsSuccess;
-  constructor ( public payload: Product[] ) {}
+  constructor ( public payload: ProductsState ) {}
 }
 
 export class DirectSorting implements Action {

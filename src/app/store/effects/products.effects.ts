@@ -2,7 +2,7 @@ import { Category } from './../../interfaces/category';
 import { selectProductsList, selectCategoriesList } from './../selectors/products.selectors';
 import { Product } from './../../interfaces/product';
 import { ProductsService } from './../../services/products.service';
-import { GetProducts, GetProductsSuccess, EProductsActions, FilterProducts, FilterProductsSuccess } from './../actions/products.actions';
+import { GetProducts, GetProductsSuccess, EProductsActions, FilterProducts, FilterProductsSuccess, SortProducts, SortProductsSuccess } from './../actions/products.actions';
 import { IAppState } from './../state/app.state';
 import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
@@ -12,6 +12,20 @@ import { switchMap, map, withLatestFrom } from 'rxjs/operators';
 
 @Injectable()
 export class ProductsEffects {
+  @Effect()
+  sortProducts$ = this._actions$.pipe(
+    ofType<SortProducts>(EProductsActions.SortProducts),
+    withLatestFrom(
+      this._store.select(selectProductsList)
+    ),
+    switchMap(([action, products]: [SortProducts, Product[]]) => {
+      const newProducts: Product[] = action.payload ? [...products].sort((a,b) => a[action.payload].localeCompare(b[action.payload])) : products;
+
+      return of(new SortProductsSuccess({ products: newProducts, sortBy: action.payload == '' ? null : action.payload }));
+    })
+  );
+
+
   @Effect()
   getProducts$ = this._actions$.pipe(
     ofType<GetProducts>(EProductsActions.GetProducts),

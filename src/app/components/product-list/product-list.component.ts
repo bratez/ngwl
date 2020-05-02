@@ -6,7 +6,7 @@ import { Store, select } from '@ngrx/store';
 import { Router, NavigationExtras } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../interfaces/category';
-import { GetProducts, FilterProducts } from 'src/app/store/actions/products.actions';
+import { GetProducts, FilterProducts, SortProducts } from 'src/app/store/actions/products.actions';
 
 @Component({
   selector: 'app-product-list',
@@ -36,8 +36,8 @@ export class ProductListComponent implements OnInit {
     console.log(event)
   }
 
-  onSorting(event) {
-    console.log(event)
+  onSorting(param) {
+    this._store.dispatch(new SortProducts(param));
   }
 
   toWishlist(id) {
