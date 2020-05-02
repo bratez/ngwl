@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Category } from '../../interfaces/category';
 
@@ -8,7 +9,7 @@ import { Category } from '../../interfaces/category';
 })
 
 export class ProductListToolbarComponent implements OnInit {
-  @Input()  categories: Category[];
+  @Input() categories$: Observable<Category[]>;
 
   @Output() onCategory = new EventEmitter<any>();
   @Output() onChangeDirection = new EventEmitter<any>();
@@ -19,16 +20,16 @@ export class ProductListToolbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectCategory(event) {
-    this.onCategory.emit(event);
+  selectCategory(data) {
+    this.onCategory.emit(data);
   }
 
-  changeDirection(event) {
-    this.onChangeDirection.emit(event);
+  changeDirection() {
+    this.onChangeDirection.emit();
   }
 
   changeSorting(event) {
-    this.onSorting.emit(event);
+    this.onSorting.emit(event.target.value);
   }
 
 }

@@ -1,7 +1,7 @@
 <h1>{{pageName}} (angular test)</h1>
 
 <app-product-list-toolbar
-  [categories]="categories"
+  [categories$]="categories$"
   (onCategory)="onCategory($event)"
   (onChangeDirection)="onChangeDirection($event)"
   (onSorting)="onSorting($event)"

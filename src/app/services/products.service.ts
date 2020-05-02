@@ -1,3 +1,4 @@
+import { Category } from './../interfaces/category';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -11,5 +12,9 @@ export class ProductsService {
 
   public getJSON(): Observable<any> {
     return this.http.get("./assets/products.json");
+  }
+
+  public getCategories(products): Category[] {
+    return Array.from(new Set(products.map((el) => { return el.category } ))).map(el => { return {name: el.toString(), selected: false} });
   }
 }

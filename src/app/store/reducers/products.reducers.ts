@@ -1,6 +1,6 @@
+import { ProductsService } from './../../services/products.service';
 import { ProductsActions, EProductsActions } from './../actions/products.actions';
 import { initialProductsState, ProductsState } from './../state/products.state';
-import { State } from '@ngrx/store';
 
 export const productsReducers = (
   state = initialProductsState,
@@ -10,13 +10,15 @@ export const productsReducers = (
     case EProductsActions.GetProductsSuccess:
       return {
         ...state,
-        products: action.payload
+        products: action.payload.products,
+        categories: action.payload.categories
       }
 
     case EProductsActions.FilterProductsSuccess:
       return {
         ...state,
-        products: action.payload
+        products: action.payload.products,
+        categories: action.payload.categories
       }
 
     case EProductsActions.SortProductsSuccess:

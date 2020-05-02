@@ -1,3 +1,4 @@
+import { ProductsState } from './../state/products.state';
 import { Product } from './../../interfaces/product';
 import { Action } from '@ngrx/store';
 
@@ -27,16 +28,17 @@ export class GetProducts implements Action {
 
 export class GetProductsSuccess implements Action {
   public readonly type = EProductsActions.GetProductsSuccess;
-  constructor ( public payload: Product[] ) {}
+  constructor ( public payload: ProductsState ) {}
 }
 
 export class FilterProducts implements Action {
   public readonly type = EProductsActions.FilterProducts;
+  constructor ( public payload: string ) {}
 }
 
 export class FilterProductsSuccess implements Action {
   public readonly type = EProductsActions.FilterProductsSuccess;
-  constructor ( public payload: Product[] ) {}
+  constructor ( public payload: ProductsState ) {}
 }
 
 export class SortProducts implements Action {

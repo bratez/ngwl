@@ -1,15 +1,15 @@
 <div class="toolbar-row">
-  <ul *ngIf="categories.length">
+  <ul *ngIf="categories$ | async as categories">
     <li
       *ngFor="let category of categories"
-      (click)="selectCategory($event)"
+      (click)="selectCategory(category.name)"
       >
       {{category.name}}
     </li>
   </ul>
 
   <label class="direction">
-    <input type="checkbox" (click)="changeDirection($event)">
+    <input type="checkbox" (click)="changeDirection()">
     <span>Descending</span>
   </label>
   <div class="sorting-wrapper">
