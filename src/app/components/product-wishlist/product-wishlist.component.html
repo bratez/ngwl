@@ -1,1 +1,12 @@
-<p>product-wishlist works!</p>
+<h1>{{pageName}} (angular test)</h1>
+
+<ul *ngIf="products$ | async as products">
+  <li *ngFor="let product of products" [ngClass]="{'hidden': !product.inWishlist }">
+    <div class="image">
+      <img src="{{product.imageUrl}}" alt="product.title">
+    </div>
+    <div class="name" (click)="toProduct(product.id)">{{product.title}}</div>
+    <div class="category">{{product.category}}</div>
+    <div class="description">{{product.description}}</div>
+  </li>
+</ul>

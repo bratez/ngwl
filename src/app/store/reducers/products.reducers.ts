@@ -34,6 +34,12 @@ export const productsReducers = (
         products: action.payload
       }
 
+    case EProductsActions.WishlistToggleSuccess:
+      return {
+        ...state,
+        products: action.payload
+      }
+
     default:
       return state;
   }
