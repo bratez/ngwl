@@ -1,4 +1,4 @@
-<h1>{{pageName}} (angular test)</h1>
+<h1>{{pageName}} (angular test) <span (click)="wishlist()">&#x2764;</span></h1>
 
 <app-product-list-toolbar
   [categories$]="categories$"
@@ -9,7 +9,7 @@
 </app-product-list-toolbar>
 
 <ul *ngIf="products$ | async as products">
-  <li *ngFor="let product of products">
+  <li *ngFor="let product of products" [ngClass]="{'hidden': !product.visible }">
     <div class="image">
       <img src="{{product.imageUrl}}" alt="product.title">
       <button class="to-wishlist" (click)="toWishlist(product.id)" [ngClass]="{'selected': product.inWishlist }">&#x2764;</button>

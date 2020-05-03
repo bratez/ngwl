@@ -3,10 +3,10 @@ import { Product } from './../../interfaces/product';
 import { selectProductsList, selectCategoriesList } from './../../store/selectors/products.selectors';
 import { IAppState } from './../../store/state/app.state';
 import { Store, select } from '@ngrx/store';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../interfaces/category';
-import { GetProducts, FilterProducts, SortProducts } from 'src/app/store/actions/products.actions';
+import { GetProducts, FilterProducts, SortProducts, WishlistToggle } from 'src/app/store/actions/products.actions';
 
 @Component({
   selector: 'app-product-list',
@@ -41,11 +41,15 @@ export class ProductListComponent implements OnInit {
   }
 
   toWishlist(id) {
-    console.log(id)
+    this._store.dispatch(new WishlistToggle(id));
   }
 
   toProduct(id) {
     this.router.navigate([`/products/${id}`]);
+  }
+
+  wishlist() {
+    this.router.navigate([`/wishlist/`]);
   }
 
 }

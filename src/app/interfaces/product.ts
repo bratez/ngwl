@@ -7,4 +7,5 @@ export interface Product {
   imageBig: string;
   inWishlist: boolean;
   category: string;
+  visible: boolean;
 }

@@ -34,18 +34,6 @@ export const productsReducers = (
         products: action.payload
       }
 
-    case EProductsActions.AddingToWishlistSuccess:
-      return {
-        ...state,
-        products: action.payload
-      }
-
-    case EProductsActions.RemovingFromWishlistSuccess:
-      return {
-        ...state,
-        products: action.payload
-      }
-
     default:
       return state;
   }

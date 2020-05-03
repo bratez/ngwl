@@ -2,7 +2,7 @@ import { Category } from './../../interfaces/category';
 import { selectProductsList, selectCategoriesList } from './../selectors/products.selectors';
 import { Product } from './../../interfaces/product';
 import { ProductsService } from './../../services/products.service';
-import { GetProducts, GetProductsSuccess, EProductsActions, FilterProducts, FilterProductsSuccess, SortProducts, SortProductsSuccess } from './../actions/products.actions';
+import { GetProducts, GetProductsSuccess, EProductsActions, FilterProducts, FilterProductsSuccess, SortProducts, SortProductsSuccess, WishlistToggle, WishlistToggleSuccess } from './../actions/products.actions';
 import { IAppState } from './../state/app.state';
 import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
@@ -41,10 +41,14 @@ export class ProductsEffects {
       this._store.select(selectCategoriesList)
     ),
     switchMap(([action, products, categories]: [FilterProducts, Product[], Category[]]) => {
-      const newProducts = products.filter(el => el.category == action.payload);
+      const newProducts: Product[] = [];
       const newCategories: Category[] = [];
+      let filterOff = false;
 
       Object.keys(categories).map(i => {
+        if (categories[i].name == action.payload && categories[i].selected) {
+          filterOff = true;
+        }
         newCategories.push(
           {
             name: categories[i].name,
@@ -53,7 +57,38 @@ export class ProductsEffects {
         )
       });
 
+      Object.keys(products).map(i => {
+        const newItem = {...products[i]};
+        newItem.visible = true;
+        if (!filterOff) {
+          newItem.visible = newItem.category == action.payload;
+        }
+        newProducts.push(newItem);
+      });
+
       return of(new FilterProductsSuccess({products: newProducts, categories: newCategories}))
+    })
+  );
+
+  @Effect()
+  wishlistToggle$ = this._actions$.pipe(
+    ofType<WishlistToggle>(EProductsActions.WishlistToggle),
+    withLatestFrom(
+      this._store.select(selectProductsList)
+    ),
+    switchMap(([action, products]: [WishlistToggle, Product[]]) => {
+      const newProducts: Product[] = [];
+
+      Object.keys(products).map(i => {
+        const newItem = {...products[i]};
+
+        if (newItem.id == action.payload) {
+          newItem.inWishlist = !newItem.inWishlist;
+        }
+        newProducts.push(newItem);
+      });
+
+      return of(new WishlistToggleSuccess(newProducts))
     })
   );
 

@@ -3,6 +3,7 @@
     <li
       *ngFor="let category of categories"
       (click)="selectCategory(category.name)"
+      [ngClass]="{'selected': category.selected }"
       >
       {{category.name}}
     </li>

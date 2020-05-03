@@ -15,11 +15,8 @@ export enum EProductsActions {
   DirectSorting = 'Direct Sorting',
   DirectSortingSuccess = 'Direct Sorting Success',
 
-  AddingToWishlist = 'Adding To Wishlist',
-  AddingToWishlistSuccess = 'Adding To Wishlist Success',
-
-  RemovingFromWishlist = 'Removing From Wishlist',
-  RemovingFromWishlistSuccess = 'Adding From Wishlist Success'
+  WishlistToggle = 'Toggle In Wishlist',
+  WishlistToggleSuccess = 'Toggle In Wishlist Success'
 }
 
 export class GetProducts implements Action {
@@ -60,21 +57,13 @@ export class DirectSortingSuccess implements Action {
   constructor ( public payload: Product[] ) {}
 }
 
-export class AddingToWishlist implements Action {
-  public readonly type = EProductsActions.AddingToWishlist;
+export class WishlistToggle implements Action {
+  public readonly type = EProductsActions.WishlistToggle;
+  constructor ( public payload: number ) {}
 }
 
-export class AddingToWishlistSuccess implements Action {
-  public readonly type = EProductsActions.AddingToWishlistSuccess;
-  constructor ( public payload: Product[] ) {}
-}
-
-export class RemovingFromWishlist implements Action {
-  public readonly type = EProductsActions.RemovingFromWishlist;
-}
-
-export class RemovingFromWishlistSuccess implements Action {
-  public readonly type = EProductsActions.RemovingFromWishlistSuccess;
+export class WishlistToggleSuccess implements Action {
+  public readonly type = EProductsActions.WishlistToggleSuccess;
   constructor ( public payload: Product[] ) {}
 }
 
@@ -91,8 +80,5 @@ SortProductsSuccess |
 DirectSorting |
 DirectSortingSuccess |
 
-AddingToWishlist |
-AddingToWishlistSuccess |
-
-RemovingFromWishlist |
-RemovingFromWishlistSuccess;
+WishlistToggle |
+WishlistToggleSuccess;

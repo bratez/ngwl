@@ -11,6 +11,13 @@
 
 h1 {
   margin-bottom: 30px;
+  position: relative;
+
+  span {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+  }
 }
 
 ul {
@@ -25,6 +32,10 @@ ul {
 li {
   width: 165px;
   margin-bottom: 25px;
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .name {
