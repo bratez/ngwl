@@ -31,7 +31,8 @@ export const productsReducers = (
     case EProductsActions.DirectSortingSuccess:
       return {
         ...state,
-        products: action.payload
+        products: action.payload.products,
+        direction: action.payload.direction
       }
 
     case EProductsActions.WishlistToggleSuccess:

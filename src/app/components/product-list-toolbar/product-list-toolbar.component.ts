@@ -24,8 +24,8 @@ export class ProductListToolbarComponent implements OnInit {
     this.onCategory.emit(data);
   }
 
-  changeDirection() {
-    this.onChangeDirection.emit();
+  changeDirection(event) {
+    this.onChangeDirection.emit(event.target.checked);
   }
 
   changeSorting(event) {

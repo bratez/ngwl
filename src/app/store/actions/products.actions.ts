@@ -50,11 +50,12 @@ export class SortProductsSuccess implements Action {
 
 export class DirectSorting implements Action {
   public readonly type = EProductsActions.DirectSorting;
+  constructor ( public payload: boolean ) {}
 }
 
 export class DirectSortingSuccess implements Action {
   public readonly type = EProductsActions.DirectSortingSuccess;
-  constructor ( public payload: Product[] ) {}
+  constructor ( public payload: ProductsState ) {}
 }
 
 export class WishlistToggle implements Action {

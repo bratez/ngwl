@@ -1,3 +1,4 @@
+import { DirectSorting } from './../../store/actions/products.actions';
 import { Observable } from 'rxjs';
 import { Product } from './../../interfaces/product';
 import { selectProductsList, selectCategoriesList } from './../../store/selectors/products.selectors';
@@ -32,8 +33,8 @@ export class ProductListComponent implements OnInit {
     this._store.dispatch(new FilterProducts(event));
   }
 
-  onChangeDirection(event) {
-    console.log(event)
+  onChangeDirection(param) {
+    this._store.dispatch(new DirectSorting(param));
   }
 
   onSorting(param) {

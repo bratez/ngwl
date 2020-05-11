@@ -2,7 +2,7 @@ import { Category } from './../../interfaces/category';
 import { selectProductsList, selectCategoriesList } from './../selectors/products.selectors';
 import { Product } from './../../interfaces/product';
 import { ProductsService } from './../../services/products.service';
-import { GetProducts, GetProductsSuccess, EProductsActions, FilterProducts, FilterProductsSuccess, SortProducts, SortProductsSuccess, WishlistToggle, WishlistToggleSuccess } from './../actions/products.actions';
+import { GetProducts, GetProductsSuccess, EProductsActions, FilterProducts, FilterProductsSuccess, SortProducts, SortProductsSuccess, WishlistToggle, WishlistToggleSuccess, DirectSorting, DirectSortingSuccess } from './../actions/products.actions';
 import { IAppState } from './../state/app.state';
 import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
@@ -22,6 +22,19 @@ export class ProductsEffects {
       const newProducts: Product[] = action.payload ? [...products].sort((a,b) => a[action.payload].localeCompare(b[action.payload])) : products;
 
       return of(new SortProductsSuccess({ products: newProducts, sortBy: action.payload == '' ? null : action.payload }));
+    })
+  );
+
+  @Effect()
+  directProducts$ = this._actions$.pipe(
+    ofType<DirectSorting>(EProductsActions.DirectSorting),
+    withLatestFrom(
+      this._store.select(selectProductsList)
+    ),
+    switchMap(([action, products]: [DirectSorting, Product[]]) => {
+      const newProducts: Product[] = [...products].reverse();
+
+      return of(new DirectSortingSuccess({ products: newProducts, direction: action.payload }));
     })
   );
 
